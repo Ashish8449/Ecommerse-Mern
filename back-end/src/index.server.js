@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 
 const authRoutes = require("./routes/auth");
 const adminAuthRoutes = require("./routes/admin/auth");
+const categoryRoutes = require("./routes/category");
 
 //environment variables
 
@@ -28,10 +29,12 @@ mongoose
 
 // middleware
 app.use(bodyParser.json());
-app.use("/api", authRoutes);
-app.use("/api", adminAuthRoutes);
 
 // routes
+app.use("/api", authRoutes);
+app.use("/api", adminAuthRoutes);
+app.use("/api", categoryRoutes);
+
 app.get("/", (req, res) => {
   res.status(200).send("hello from server");
 });
